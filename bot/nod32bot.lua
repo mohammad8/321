@@ -249,279 +249,130 @@ function create_config( )
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
     about_text = [[
-https://github.com/BH-YAGHI/NOD32-BOT.git
-
-channel : @Nod32team
-sodu : @behrooZyaghi
 ]],
     help_text_realm = [[
 Realm Commands:
 
+📝 ليست دستورات گپ ادمین :
+=======================
+👒ساخت گروه جدید
 !creategroup [Name]
-Create a group
-
+🌟ساخت گروه ادمین
 !createrealm [Name]
-Create a realm
-
+=======================
+☢تنظیم نام گروه
 !setname [Name]
-Set realm name
-
+☢تنظیم توضیحات  گروه ها
 !setabout [GroupID] [Text]
-Set a group's about text
-
+☢تنظیم قوانین گروه ها
 !setrules [GroupID] [Text]
-Set a group's rules
-
+=======================
+🔒قفل  تنظیمات گروه ها
 !lock [GroupID] [setting]
-Lock a group's setting
-
+🔓بازکردن قفل تنظیمت گروه ها
 !unlock [GroupID] [setting]
-Unock a group's setting
-
+=======================
+👥دریافت لیست اعضای گروه
 !wholist
-Get a list of members in group/realm
-
+💟دریافت لیست گروه به صورت فایل
 !who
-Get a file of members in group/realm
-
+نوع گروه
 !type
-Get group type
-
+=======================
+📛اخراج همه اعضا و پاک کردن گروه
 !kill chat [GroupID]
-Kick all memebers and delete group
-
+📛اخراج همه اعضا و پاک کردن گروه ادمین
 !kill realm [RealmID]
-Kick all members and delete realm
-
+=======================
+🔋گلوبال ادمین کردن فرد با یوزر نیم/آیدی (فقط سازنده)
 !addadmin [id|username]
-Promote an admin by id OR username *Sudo only
-
+🎈تنزل گلوبال ادمینی  فرد با یوزر نیم/آیدی (فقط سازنده)
 !removeadmin [id|username]
-Demote an admin by id OR username *Sudo only
-
+=======================
+🎌دریافت لیست گروه های ربات
 !list groups
-Get a list of all groups
-
+🎌دریافت لیست گروه های ادمین
 !list realms
-Get a list of all realms
-
+🎌دریافت وضعیت گروه یا گپ ادمین
 !log
-Grt a logfile of current group or realm
-
+=======================
+🗣ارسال یک متن به همه گروه های ربات
 !broadcast [text]
-!broadcast Hello !
-Send text to all groups
-Only sudo users can run this command
-
-!bc [group_id] [text]
-!bc 123456789 Hello !
-This command will send text to [group_id]
-
-ch: @Nod32team
+=======================
+🌹ارسال یک متن به گروه موردنظر
+!br [group_id] [text]
+=======================
 
 ]],
     help_text = [[
-NOD32 Commands list :
- 
-1-banhammer list ^
- 
-!kick [username|id]
-(کیک کردن شخص (حتی با ریپلی)
-
-!ban [ username|id]
-(بن کردن افراد (حتی با ریپلی)
-
-!unban [id]
-(انبن کردن افراد (همراه ایدی)
-
-!kickinactive
-حذف اعضای غیرغعال گروه
-
-!kickme
-خروج از گروه
-
-2-Statistics list ^
-
-!who
-لیست+ایدی همه اعضا
-
-!all
-دریافت اطلاعات کلی گروه
-
-!stats
-امار کلی گروه
-
-!modlist
-لیست مدیران گروه
-
-!banlist
-لیست اعضا بن شده
-
-3-Rate Member ^
-
-!setowner [id]
-(id ایجاد مدیر جدید (همراه 
-
-!promote [username]
-(ایجاد ادمین جدید (همراه ریپلی)
-
-!demote [username]
-(برکنار کردن ادمین (همراه ریپلی)
-
-4-General changes ^
-
-!setname [name]
-ایجاد اسم جدید برای گروه
-
-!setphoto
-ایجاد عکس جدید برای پروفایل گروه
-
-!set rules <text>
-ایجاد قانون جدید برای گروه
-
-!set about <text>
-ایجاد درباره گروه
-
-!setflood [value]
-حساسیت به اسپم در گروه
-
-5-View details ^
-
-!about
-درباره گروه
-
-!rules
-قوانین گروه
-
-!settings
-دیدن تنظیمات فعلی گروه
-
-!help
-لیست دستورات ربات
-
-6-Security Group ^
-
-!lock member 
-قفل ورود اعضا جدید
-
-!lock join
-قفل ورود اعضا جدید توسط لینک
-
-!lock name
-قفل اسم گروه
-
-!lock chat
-قفل چت ممنوع
-
-!lock ads
-قفل تبلیغات
-
-!lock leave
-قفل خروج=بن گروه
-
-!lock fosh
-ممنوع کردن فحش
-
-!lock chat
-قفل چت ممنوع گروه
-
-!antibot enable 
-ورود ربات ها ممنوع
-
-!antibot disable
-ورود ربات ها ازاد
-
-!unlock xxxx
-[*name*leave*member]
-[*fosh*ads]
-[chat*join*photo]
-باز کردن دستورات قفل شده
-
-7-Fun time ^
-
-!time country city
-ساعت کشور مورد نظر
-
-!loc country city
-مشخصات کشور و شهر مورد نظر
-
-!google
-سرچ مطلب مورد نظر از گوگل
- 
- !gps
- مکان کشور , شهر مورد نظر تحت گوگل
- 
- !calc 3+1
- انجام محاسبات ریاضی
-
-8-Service Provider ^
-
-!newlink
-ایجاد لینک جدید
-
-!link
-نمایش لینک گروه
-
-!linkpv
-فرستادن لینک گروه تو پیوی
-(حتما شماره ربات را سیو کنید)
-
-!invite username
-اضافه کردن شخص تو گروه
-(حتما شماره ربات را سیو کرده باشد)
-
-9-Member Profile and Group ^
-!owner
-مدیر گروه
-
-!id
-ایدی شخص مورد نظر
-
-!res [username]
-در اوردن ایدی شخص مورد نظر
-
-!info 
-مخشصات فرد مورد نظر
-
-!settings
-تنظیمات فعلی گروه
-
-10-filter word Mode ^
-
-!filter set (word)
-اضافه کردن کلمه جدید به لیست
-
-!filter del (word)
-حذف کلمه از لیست
-
-!filter warn (word)
-اخطار به کلمه فیتر شده
-
-!filterlist
-لیست کلمات فیلتر شده
-
-11-bot number & support ^
-
-!botnumber
-دریافت شماره ربات
-
-!support
-دعوت سازنده ربات به گروه
-(در صورت وجود مشکل)
-
-!version
-ورژن ربات
-
-!feedback (text)
-ارسال نظرات به سازنده
-
-you can use both "/" and "!" 
-.شما میتوانید از ! و / استفاده کنید
-
-channel: @Nod32Team
-
-G00D LUCK ^_^
-]]
+لیست دستورات anti gp:
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+اخراج : {آیدی ، یوزرنیم } 
+شخص مورد نظر از گروه اخراج میشود
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+بن {آیدی ، یوزرنیم}
+شخص مورد نظر دیگر نمیتواند در گروه فعلی عضو شود
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+حذف بن {آیدی ، یوزرنیم }
+شخص مورد نظر میتواند دوباره در گروه فعلی عضو شود (بن او حذف میشود)
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+لیست بن 
+لیست افرادی که در گروه فعلی بن هستند
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+اخراج من
+شما از گروه خارج میشوید (بعدا میتوانید برگردید)
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+صاحب گروه
+نمایش مشخصات صاحب گروه (مدیر اصلی)
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+لیست مدیران
+لیست کمک مدیران در گروه
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+ترفیع {، آیدی ، یوزرنیم}
+اضافه کردن مدیر کمکی 
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+تنزیل {آیدی ، یوزرنیم}
+حذف یک مدیر کمکی
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+قفل {اعضا ، نام ، ربات ، تگ ، عکس ، خروج ، فحش ، اینگلیسی}
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+باز کردن {اعضا ، نام ، ربات ، تگ ، عکس ، خروج ، فحش ، اینگلیسی}
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+تنظیم عکس
+اضافه کردن و قفل عکس گروه
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+تنظیم نام <اسم مورد نظر>
+اسم مورد نظر را برای گروه تنظیم میکند
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+قوانین 
+پیامی حاوی قوانین گروه
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+درباره
+پیامی حاوی متنی از طرف مدیر
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+تنظیم قوانین <متن مورد نظر>
+متن مورد نظر را برای قوانین گروه تنظین میکند
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+لینک جدید
+تعویض یا ساخت لینک جدید گروه
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+لینک
+ارسال لینک گروه
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+تنظیم حساسیت <مقدار>
+تنظیم مقدار مورد نظر برای حساسیت تعداد پیام پشت هم
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+ پاک کردن {مدیران ، قوانین ، درباره}
+پاک میکند مطالب قوانین یا درباره و یا افراد مدیر را
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+مشخصات <یوزرنیم>
+مشخصات یوزرنیم مورد نظر را میفرستد
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+تگ <پیام مورد نظر>
+همه افراد گروه را صدا میکند تا پیام شما را ببینند
+〰〰〰〰〰〰〰〰〰〰〰〰
+sudo:@po_oker
+bot id : @antigp]]
    }
   serialize_to_file(config, './data/config.lua')
   print('saved config into ./data/config.lua')
